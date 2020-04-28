@@ -1,16 +1,15 @@
 """
 by Nilov Daniel "Обработка массивов" 
 """
-import random
 N = 100
 import random
-def qSort ( A ): 
+def qSort ( A ): #функция быстрой сортировки
     if len(A) <= 1: return A # (1)
     X = random.choice(A) # (2)
-    B1 = [ b for b in A if b < X ] # (3)
-    BX = [ b for b in A if b == X ] # (4)
-    B2 = [ b for b in A if b > X ] # (5)
-    return qSort(B1)+BX+qSort(B2) # (6)
+    B1 = [ b for b in A if b < X ]
+    BX = [ b for b in A if b == X ]
+    B2 = [ b for b in A if b > X ] 
+    return qSort(B1)+BX+qSort(B2)
 def binSearch (lst, x): #Функция бинарного поиска
 	lst.sort()
 	p = 0
