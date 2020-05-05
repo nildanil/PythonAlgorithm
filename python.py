@@ -1,7 +1,7 @@
 """
 by Nilov Daniil "Arrays handler"
 """
-N = 1000 #const integer varible - size of array
+N = 100 #const integer varible - size of array
 import random as rand
 class algorithm(object): #make class Algorithm to ease the use of algorithms of sorts and binary search
     def __init__(self, a):#initialize the atrubute of class, it's the list, that we want to handle
