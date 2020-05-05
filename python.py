@@ -42,7 +42,7 @@ class algorithm(object): #make class Algorithm to ease the use of algorithms of 
             elif self.a[q] < x:
                 p = q + 1
         return answer
-    def quickSort(self, l, r): #this the method of quick sort
+    def quickSort(self, l, r): #this is the method of quick sort
         if l >= r:
             return
         else:
