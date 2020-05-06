@@ -1,7 +1,7 @@
 """
 by Nilov Daniil "Arrays handler"
 """
-N = 100 #const integer varible - size of array
+N = 15000 #const integer varible - size of array
 import random as rand
 class algorithm(object): #make class Algorithm to ease the use of algorithms of sorts and binary search
     def __init__(self, a):#initialize the atrubute of class, it's the list, that we want to handle
@@ -17,16 +17,14 @@ class algorithm(object): #make class Algorithm to ease the use of algorithms of 
              if self.a[j] > self.a[j + 1]:
                  self.a[j], self.a[j + 1] = self.a[j + 1], self.a[j]
     def selectionSort(self): #this is the method of selection
-        i = 0
-        while i < N - 1:
-            m = i
-            j = i + 1
-            while j < N:
-                if self.a[j] < self.a[m]:
-                    m = j
-                j += 1
-            self.a[i], self.a[m] = self.a[m], self.a[i]
-            i += 1
+        for i in range(N - 1):
+            nMin = i
+            for j in range(i + 1, N):
+             if self.a[j] < self.a[nMin]:
+                nMin = j
+             if i != nMin:
+                 self.a[i], self.a[nMin] = self.a[nMin], self.a[i]
+
     def binSearch(self, x):  #function of binary search(it takes one argument "x")
         self.a.sort()#array must be sorted
         p = 0
@@ -42,31 +40,24 @@ class algorithm(object): #make class Algorithm to ease the use of algorithms of 
             elif self.a[q] < x:
                 p = q + 1
         return answer
-    def quickSort(self, l, r): #this is the method of quick sort
-        if l >= r:
-            return
-        else:
-            q = rand.choice(self.a[l:r + 1])#random choise of mid between l and r
-            i = l
-            j = r
-            while i <= j:
-                while self.a[i] < q:
-                    i += 1
-                while self.a[j] > q:
-                    j -= 1
-                if i <= j:
-                    self.a[i], self.a[j] = self.a[j], self.a[i]
-                    i += 1
-                    j -= 1
-                    self.quickSort(l, j)
-                    self.quickSort(i, r)#recursion in the method
+
+    def quickSort(self, nStart, nEnd):
+        if nStart >= nEnd: return
+        L = nStart;
+        R = nEnd
+        X = self.a[(L + R) // 2]
+        while L <= R:
+            while self.a[L] < X: L += 1  
+            while self.a[R] > X: R -= 1
+            if L <= R:
+                self.a[L], self.a[R] = self.a[R], self.a[L]
+                L += 1;
+                R -= 1
+        self.quickSort( nStart, R) 
+        self.quickSort( L, nEnd)
 
 """main function(out of class) begins here"""
 X = [rand.randint(0, N) for i in range(N)] #filling of array with random element
 r = algorithm(X) # "r" is object of class algorithm
-r.bubbleSort()
-r.stoneSort()
-r.selectionSort()
 r.quickSort(0,N-1)
-r.binSearch(8)
 print(X)
