@@ -59,5 +59,10 @@ class algorithm(object): #make class Algorithm to ease the use of algorithms of 
 """main function(out of class) begins here"""
 X = [rand.randint(0, N) for i in range(N)] #filling of array with random element
 r = algorithm(X) # "r" is object of class algorithm
+r.bubbleSort()
+r.stoneSort()
+r.selectionSort()
+r.binSearch(5)
 r.quickSort(0,N-1)
+
 print(X)
